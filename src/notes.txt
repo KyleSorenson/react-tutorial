@@ -1,7 +1,0 @@
-* Introducing JSX
-  * Elements: JSX produces React "elements"
-  * You can put any valid JavaScript expression inside JSX curly braces
-  * It is best practice to wrap JSX in parentheses when splitting over multiple lines
-  * After "compilation" <-- research further ***, JSX elements become JavaScript function calls that evalute to objects
-  * Element attributes can be specified within quotes or curly braces, but not both
-

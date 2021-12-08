@@ -3,7 +3,7 @@
 * Elements are different than Components (Components are made up of Elements)
 * You can put any valid JavaScript expression inside JSX curly braces
 * It is best practice to wrap JSX in parentheses when splitting over multiple lines
-* After [compilation](#), JSX elements become JavaScript function calls that evaluate to objects
+* After [compilation](#topics-to-research-more), JSX elements become JavaScript function calls that evaluate to objects
 * Element attributes can be specified within quotes or curly braces, but not both
 
 ---
@@ -27,3 +27,24 @@
 * Candidates for component extraction are UI elements that get used repeatedly and UI elements that are large and complex
 * A component can never modify its own props: they are read-only
 * **All React components must act like pure functions**
+
+---
+
+## [State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+* State is similar to props, but controlled by the component
+* Steps for converting a function to a class:
+  1. Create an ES6 class with the same name that extends React.Component
+  2. Add an empty method to it called render()
+  3. Move the bdy of the function into the render() method
+  4. Replace props with this.props in the render body
+  5. Delete original function declaration
+* Local state and lifecycle methods
+
+---
+
+## Topics to Research More
+* Compilation
+  * [See Here](https://reactjs.org/docs/introducing-jsx.html#jsx-is-an-expression-too)
+* Why the single instantiation of class components allows them to use features like local state and life cycle methods.
+  * [See Here](https://reactjs.org/docs/state-and-lifecycle.html#converting-a-function-to-a-class)
+

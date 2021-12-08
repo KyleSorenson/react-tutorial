@@ -3,7 +3,7 @@
 * Elements are different than Components (Components are made up of Elements)
 * You can put any valid JavaScript expression inside JSX curly braces
 * It is best practice to wrap JSX in parentheses when splitting over multiple lines
-* After <span style="color: red">compilation</span>, JSX elements become JavaScript function calls that evaluate to objects
+* After [compilation](#), JSX elements become JavaScript function calls that evaluate to objects
 * Element attributes can be specified within quotes or curly braces, but not both
 
 ---

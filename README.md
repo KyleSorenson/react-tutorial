@@ -12,7 +12,7 @@
 
 * ## [Components and Props](https://reactjs.org/docs/components-and-props.html)
   * Components are like functions: they accept arguments in the form of "props" and return React Elements
-  * Functional Components: the simplest way to write a component is literally as a function: "const FunctionalComponent = (props) => <h1>This is a React Element</h1>"
+  * Functional Components: the simplest way to write a component is literally as a function: `const FunctionalComponent = (props) => <h1>This is a React Element</h1>`
   * Class Components: ES6 classes can also be used to define components
   * The two forms are equivalent from React's point of view
   * React Elements an also represent React Components

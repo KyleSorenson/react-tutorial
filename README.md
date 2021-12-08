@@ -38,7 +38,15 @@
   3. Move the bdy of the function into the render() method
   4. Replace props with this.props in the render body
   5. Delete original function declaration
-* Local state and lifecycle methods
+* [Class components have special access to local state and lifecycle methods](#topics-to-research-more)
+* Steps to add state to a class:
+  1. Replace this.props.xxx with this.state.xxx
+  2. Add a class constructor that assigns the initial state
+* When a component is rendered, it is called "mounting" in React
+* When a component is removed, it is called "unmounting" in React
+* `componentDidMount()` runs after the component has been rendered to the DOM
+* `componentWillUnmount()` runs immediately before the component is removed from the DOM
+* [Functions should be called at speciic times relative to the component's lifecycle](#topics-to-research-more)
 
 ---
 
@@ -47,4 +55,47 @@
   * [See Here](https://reactjs.org/docs/introducing-jsx.html#jsx-is-an-expression-too)
 * Why the single instantiation of class components allows them to use features like local state and life cycle methods.
   * [See Here](https://reactjs.org/docs/state-and-lifecycle.html#converting-a-function-to-a-class)
+* Study [this section](https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class) in more depth.
+  * Learn about `setInterval()` and `clearInterval()` functions
+  * Review the following code:
+
+```
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <Clock />,
+  document.getElementById('root')
+);
+```
 

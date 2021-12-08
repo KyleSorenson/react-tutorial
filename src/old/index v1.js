@@ -1,12 +1,8 @@
+
+// https://reactjs.org/tutorial/tutorial.html#adding-time-travel
+
 // RESEARCH FURTHER
 // Note: When we modified the Square to be a function component, we also changed onClick={() => this.props.onClick()} to a shorter onClick={props.onClick} (note the lack of parentheses on both sides).
-
-// [ ] Display the location for each move in the format (col, row) in the move history list.
-// [ ] Bold the currently selected item in the move list.
-// [X] Rewrite Board to use two loops to make the squares instead of hardcoding them.
-// [ ] Add a toggle button that lets you sort the moves in either ascending or descending order.
-// [ ] When someone wins, highlight the three squares that caused the win.
-// [ ] When no one wins, display a message about the result being a draw.
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -30,30 +26,28 @@ class Board extends React.Component {
       <Square 
         value={this.props.squares[i]} 
         onClick={ () => { this.props.onClick(i) } }
-        key={i}
       />
     );
-  }
-
-  renderGrid(rows, columns) {
-    let i = -1;
-    const grid = Array(rows).fill(Array(columns).fill(null));
-    return grid.map((row, index) => {
-      return (
-        <div className="board-row" key={index}>
-          {row.map((column, index) => {
-            i++
-            return this.renderSquare(i)
-          })}
-        </div>
-      )
-    })
   }
 
   render() {
     return (
       <div>
-        {this.renderGrid(3, 3)}
+        <div className="board-row">
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
+        </div>
       </div>
     );
   }

@@ -1,4 +1,8 @@
-[Bookmark](https://reactjs.org/docs/handling-events.html)
+## Bookmarks
+
+* [Current Position](https://reactjs.org/docs/handling-events.html)
+
+---
 
 ## [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)
 * **Elements:** JSX produces React "Elements"

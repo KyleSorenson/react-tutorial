@@ -1,3 +1,5 @@
+[Bookmark](https://reactjs.org/docs/handling-events.html)
+
 ## [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)
 * **Elements:** JSX produces React "Elements"
 * Elements are different than Components (Components are made up of Elements)
@@ -17,7 +19,11 @@
 ## [Components and Props](https://reactjs.org/docs/components-and-props.html)
 * Components are like functions: they accept arguments in the form of "props" and return React Elements
 * **Functional Components:** the simplest way to write a component is literally as a function:
-  * `const FunctionalComponent = (props) => <h1>This is a React Element</h1>`
+
+```
+const FunctionalComponent = (props) => <h1>This is a React Element</h1>
+```
+
 * **Class Components:** ES6 classes can also be used to define components
 * The two forms are equivalent from React's point of view
 * React Elements an also represent React Components
@@ -47,6 +53,24 @@
 * `componentDidMount()` runs after the component has been rendered to the DOM
 * `componentWillUnmount()` runs immediately before the component is removed from the DOM
 * [Functions should be called at speciic times relative to the component's lifecycle](#topics-to-research-more)
+* `setState()` should be used to modify state. Directly assiging a value to `this.state.value = 'new value'` will not trigger a re-render of the component.
+* Since this.props and this.state may be called asyncronously, a function should be passed to `setState()` for any value that relies on the previous version of the state
+
+```
+this.setState((state, props) => ({
+  counter: state.counter + props.increment
+}));
+
+// or
+
+this.setState(function(state, props) {
+  return {
+    counter: state.counter + props.increment
+  };
+});
+```
+* Parent and child components don't know about state. State is locally-owned, and any data derived from it must be passed down to child components. Data only flows down.
+
 
 ---
 

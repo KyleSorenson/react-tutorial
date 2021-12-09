@@ -1,12 +1,12 @@
 ## Bookmarks
 
-* [Current Position](https://reactjs.org/docs/handling-events.html)
+* [Current Place](https://reactjs.org/docs/handling-events.html): Handling Events
 
 ---
 
 ## [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)
 * **Elements:** JSX produces React "Elements"
-* Elements are different than Components (Components are made up of Elements)
+* *Elements* are different than *Components* (Components are made up of Elements)
 * You can put any valid JavaScript expression inside JSX curly braces
 * It is best practice to wrap JSX in parentheses when splitting over multiple lines
 * After [compilation](#topics-to-research-more), JSX elements become JavaScript function calls that evaluate to objects
@@ -15,7 +15,7 @@
 ---
 
 ## [Rendering Elements](https://reactjs.org/docs/rendering-elements.html)
-* Rendering to the DOM is accomplished by "ReactDOM.render(element, rootNode)"
+* Rendering to the DOM is accomplished by `ReactDOM.render(element, rootNode)`
 * React elements are immutable. To update an element you must create a new element and render it again
 
 ---

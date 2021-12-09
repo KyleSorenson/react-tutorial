@@ -10,7 +10,9 @@ import { TicTacToe } from './tic-tac-toe.js';
 
 //=========React Docs==========//
 
+let elementArray = [<h1>Element 1</h1>, <h1>Element 2</h1>];
+
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
+  <div>{elementArray}</div>,
   document.getElementById('root')
 );

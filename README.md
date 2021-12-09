@@ -1,6 +1,6 @@
 ## Bookmarks
 
-* [Current Place](https://reactjs.org/docs/handling-events.html): Handling Events
+* [Current Progress](https://reactjs.org/docs/forms.html): Forms
 
 ---
 
@@ -75,6 +75,84 @@ this.setState(function(state, props) {
 ```
 * Parent and child components don't know about state. State is locally-owned, and any data derived from it must be passed down to child components. Data only flows down.
 
+---
+
+## [Handling Events](https://reactjs.org/docs/handling-events.html)
+* With JSX you pass a function as the event handler, rather than a string. i.e. `onClick={handleEvent}` rather than `onclick="handleEvent()`
+* You cannot return false to prevent default behavior
+* React events are not the same as native events, they are [synthetic events](#topics-to-research-more)
+* You shouldn't need to call `addEventListener` to a DOM element after it is created. Listeners can be provided when the element is rendered, typically as a method on the class:
+
+```
+<button onClick={this.handleClick}>
+  {this.state.isToggleOn ? 'ON' : 'OFF'}
+</button>
+```
+* To avoid having to bind class methods to the constructor, arrow functions can be used. The first method is considered [experimental](#topics-to-research-more), but is also the *recommended* syntax.
+
+```
+// This will work but is "experimental"
+class BindToThis extends React.Component {
+  handleClick = () => {
+    console.log('this is:', this);
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        Click me
+      </button>
+    );
+  }
+}
+
+// So will this, but it is not recommended
+class BindToThis extends React.Component {
+  handleClick() {
+    console.log('this is:', this);
+  }
+
+  render() {
+    return (
+      <button onClick={() => this.handleClick()}>
+        Click me
+      </button>
+    );
+  }
+}
+```
+* If you want to pass parameters other than the React event to the handler, either of the following will work:
+
+```
+<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
+<button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
+```
+
+---
+
+## [Conditional Rendering](https://reactjs.org/docs/conditional-rendering.html)
+* Since JSX allows for any embedded expression, the `&&` operator can be used for conditionally including elements.
+  * Be careful to avoid falsy expressions
+* Ternary operators will also work in JSX
+
+---
+
+## [Lists and Keys](https://reactjs.org/docs/lists-and-keys.html)
+* If an array of JSX elements is included in the render function, each element will render:
+
+```
+let elementArray = [<h1>Element 1</h1>, <h1>Element 2</h1>];
+
+ReactDOM.render(
+  <div>{elementArray}</div>,
+  document.getElementById('root')
+);
+```
+* Whenever an array of elements is created, a unique key needs to be assigned to each element
+* The best keys use a string that uniquely identifies a list item among its siblings. [Use of indexes is discouraged](#topics-to-research-more).
+* Keys need only be unique amond siblings. The same keys maybe reused globally.
+* Unlike all other attributes, keys are not passed to components. If the same value is needed in your component, it must be passed as a prop with a different name
+* `map()` may be embedded directly in JSX. The resulting array will be rendered.
 
 ---
 
@@ -126,4 +204,9 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
-
+* Research [synthetic events](https://reactjs.org/docs/events.html)
+  * [See Here](https://reactjs.org/docs/handling-events.html)
+* Research [public class fields syntax](https://babeljs.io/docs/plugins/transform-class-properties/)
+  * [See Here](https://reactjs.org/docs/handling-events.html)
+* Research the [negative impacts of using an index as a key](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) and [why keys are necessary](https://reactjs.org/docs/reconciliation.html#recursing-on-children)
+  * [See Here](https://reactjs.org/docs/lists-and-keys.html#keys)

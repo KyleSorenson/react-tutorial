@@ -1,6 +1,7 @@
 ## Bookmarks
 
-* [Current Progress](https://reactjs.org/docs/accessibility.html)
+* [Current Progress](https://reactrouter.com/docs/en/v6/getting-started/tutorial#add-some-routes)
+* [Current Advanced Guides Progress](https://reactjs.org/docs/accessibility.html)
 * [Revisit Later](https://reactjs.org/docs/lifting-state-up.html): Lifting State Up
 
 ---

@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
 import { TicTacToe } from './tic-tac-toe.js';
+import { RouterTutorial} from './router-tutorial.js'
 
 //=========TIC TAC TOE==========//
 

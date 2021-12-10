@@ -1,7 +1,30 @@
 ## Bookmarks
 
-* [Current Progress](https://reactjs.org/docs/forms.html): Forms
+* [Current Progress](https://reactjs.org/docs/accessibility.html)
 * [Revisit Later](https://reactjs.org/docs/lifting-state-up.html): Lifting State Up
+
+---
+
+### Main Concepts
+* [Introducing JSX](#introducing-jsx)
+* [Rendering Elements](#rendering-elements)
+* [Components and Props](#components-and-props)
+* [State and Lifecycle](#state-and-lifecycle)
+* [Handling Events](#handling-events)
+* [Conditional Rendering](#conditional-rendering)
+* [Lists and Keys](#lists-and-keys)
+* [Forms](#forms)
+* [Lifting State Up](#lifting-state-up)
+* [Composition vs Inheritance](#composition-vs-inheritance)
+* [Thinking in React](#thinking-in-react)
+
+### Advanced Guides
+
+### Hooks
+
+### React Router Dom
+
+### [Further Study](#topics-to-research-more)
 
 ---
 
@@ -212,7 +235,7 @@ function App() {
 3. **Build a Static Version in React:** Build a version of your app that isn't interactive. Build out the components and pass data with props *only*. Save state for later.
   * Build top-down or bottom-up
 4. **Identify the Minimal (but complete) Representation of UI State:** Find the minimal set of mutable state that your app needs.
-  *[DRY: DOn't Repeate Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+  *[DRY: Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
 5. **Identify Where Your State Should Live:** Which component owns the state?
 6. **Add Inverse Data Flow** 
 ---

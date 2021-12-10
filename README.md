@@ -1,6 +1,7 @@
 ## Bookmarks
 
 * [Current Progress](https://reactjs.org/docs/forms.html): Forms
+* [Revisit Later](https://reactjs.org/docs/lifting-state-up.html): Lifting State Up
 
 ---
 
@@ -156,6 +157,66 @@ ReactDOM.render(
 
 ---
 
+## [Forms](https://reactjs.org/docs/forms.html)
+* **Controlled Components:** input form elements that are controlled by the React state
+  * input onChange => updates state => updates input value
+* In HTML, a `textarea` tag defines its text by its children. React uses a value attribute instead.
+* In HTML, a `select` tag selects an option based on the `selected` attribute on a child option tag. React uses a value on the select tag instead. 
+  * Multiple options can be selected at once
+* To handle multiple controlled input elements, add a name attribute to each element and target it using `event.target.name`
+* Specifying the value prop on a controlled component will lock it from being edited
+
+---
+
+## [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html)
+
+---
+
+## [Composition vs Inheritance](https://reactjs.org/docs/composition-vs-inheritance.html)
+* **Composition:** Passing children to components. Children are specified by placing JSX between component tags. They can be accessed within component using `props.children`
+  * Custom "slots" can be defined by passing full components into the props of a parent component
+  
+```
+function SplitPane(props) {
+  return (
+    <div className="SplitPane">
+      <div className="SplitPane-left">
+        {props.left}
+      </div>
+      <div className="SplitPane-right">
+        {props.right}
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <SplitPane
+      left={
+        <Contacts />
+      }
+      right={
+        <Chat />
+      } />
+  );
+}
+```
+* Component inheritence hierarchies are never recommended (don't use components the way you might use other classes or objects)
+
+---
+
+## [Thinking in React](https://reactjs.org/docs/thinking-in-react.html)
+1. **Begin with a Mockup:** Design the look and UI of your app first, before coding anything
+2. **Break the UI into a Component Hierarchy::** Draw boxes around every component and subcomponent and give them names
+3. **Build a Static Version in React:** Build a version of your app that isn't interactive. Build out the components and pass data with props *only*. Save state for later.
+  * Build top-down or bottom-up
+4. **Identify the Minimal (but complete) Representation of UI State:** Find the minimal set of mutable state that your app needs.
+  *[DRY: DOn't Repeate Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
+5. **Identify Where Your State Should Live:** Which component owns the state?
+6. **Add Inverse Data Flow** 
+---
+
 ## Topics to Research More
 * Compilation
   * [See Here](https://reactjs.org/docs/introducing-jsx.html#jsx-is-an-expression-too)
@@ -210,3 +271,13 @@ ReactDOM.render(
   * [See Here](https://reactjs.org/docs/handling-events.html)
 * Research the [negative impacts of using an index as a key](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318) and [why keys are necessary](https://reactjs.org/docs/reconciliation.html#recursing-on-children)
   * [See Here](https://reactjs.org/docs/lists-and-keys.html#keys)
+* Remember that ES6 computed property name syntax can be used to update object keys:
+
+```
+{
+  object = {
+    [variable] : value
+  }
+}
+```
+* Research [Formik](https://jaredpalmer.com/formik)

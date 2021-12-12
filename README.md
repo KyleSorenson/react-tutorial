@@ -1,6 +1,6 @@
 ## Bookmarks
 
-* [Current Progress](https://reactrouter.com/docs/en/v6/getting-started/tutorial#index-routes)
+* [Router Progress](https://reactrouter.com/docs/en/v6/getting-started/concepts)
 * [Current Advanced Guides Progress](https://reactjs.org/docs/accessibility.html)
 * [Revisit Later](https://reactjs.org/docs/lifting-state-up.html): Lifting State Up
 
@@ -23,7 +23,7 @@
 
 ### Hooks
 
-### React Router Dom
+### [React Router Dom](#react-router)
 
 ### [Further Study](#topics-to-research-more)
 
@@ -245,6 +245,33 @@ function App() {
 ## [React Router](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
 * [Nested Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#nested-routes)
   * Outlets
+  * [Index Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#index-routes)
+* [NavLink vs Link](https://reactrouter.com/docs/en/v6/getting-started/tutorial#active-links)
+  * NavLinks have access to "isActive", which can be used for styling
+* [Search Params](https://reactrouter.com/docs/en/v6/getting-started/tutorial#active-links)
+  * "?" in the url
+
+*Quote Machine*
+
+```
+<BrowserRouter>
+    <Routes>
+      <Route path="/" element={<QuoteContainer />} >
+        <Route index element={<DefaultQuote />} />  // <Quote random={true} /> ?
+        <Route path=":quoteSnippet" element={<Quote />} /> // <Quote random={false}> ?
+      </Route>
+    </Routes>
+  </BrowserRouter>
+
+function QuoteContainer {
+  return (
+    <header></header>
+    <Outlet />
+    <footer></footer>
+  )
+}
+```
+
 
 ---
 

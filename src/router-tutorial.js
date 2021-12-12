@@ -1,6 +1,6 @@
 import React from 'react';
 import './router-tutorial.css';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams, NavLink, useSearchParams, useLocation, useNavigate } from 'react-router-dom';
 
 export function RouterTutorial() {
   return (
@@ -30,6 +30,8 @@ export function Expenses() {
 
 export function Invoices() {
   let invoices = getInvoices();
+  let [searchParams, setSearchParams] = useSearchParams();
+
   return (
     <div style={{ display: "flex" }}>
       <nav
@@ -38,15 +40,39 @@ export function Invoices() {
           padding: "1rem"
         }}
       >
-        {invoices.map(invoice => (
-          <Link
-            style={{ display: "block", margin: "1rem 0" }}
-            to={`/invoices/${invoice.number}`}
-            key={invoice.number}
-          >
-            {invoice.name}
-          </Link>
-        ))}
+        <input
+          value={searchParams.get("filter") || ""}
+          onChange={event => {
+            let filter = event.target.value;
+            if (filter) {
+              setSearchParams({ filter });
+            } else {
+              setSearchParams({});
+            }
+          }}
+        />
+        {invoices
+          .filter(invoice => {
+            let filter = searchParams.get("filter");
+            if (!filter) return true;
+            let name = invoice.name.toLowerCase();
+            return name.startsWith(filter.toLowerCase());
+          })
+          .map(invoice => (
+            <QueryNavLink
+              style={({ isActive }) => {
+                return {
+                  display: "block",
+                  margin: "1rem 0",
+                  color: isActive ? "red" : ""
+                };
+              }}
+              to={`/invoices/${invoice.number}`}
+              key={invoice.number}
+            >
+              {invoice.name}
+            </QueryNavLink>
+          ))}
       </nav>
       <Outlet />
     </div>
@@ -97,6 +123,7 @@ export function getInvoice(number) {
 }
 
 export function Invoice() {
+  let navigate = useNavigate();
   let params = useParams();
   let invoice = getInvoice(parseInt(params.invoiceId, 10)); //'parseInt' converts string to number
   return (
@@ -106,6 +133,27 @@ export function Invoice() {
         {invoice.name}: {invoice.number}
       </p>
       <p>Due Date: {invoice.due}</p>
+      <p>
+      <button
+          onClick={() => {
+            deleteInvoice(invoice.number);
+            navigate("/invoices");
+          }}
+        >
+          Delete
+        </button>
+      </p>
     </main>
+  );
+}
+
+export function QueryNavLink({ to, ...props }) {
+  let location = useLocation();
+  return <NavLink to={to + location.search} {...props} />;
+}
+
+export function deleteInvoice(number) {
+  invoices = invoices.filter(
+    invoice => invoice.number !== number
   );
 }

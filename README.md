@@ -1,6 +1,6 @@
 ## Bookmarks
 
-* [Current Progress](https://reactrouter.com/docs/en/v6/getting-started/tutorial#add-some-routes)
+* [Current Progress](https://reactrouter.com/docs/en/v6/getting-started/tutorial#index-routes)
 * [Current Advanced Guides Progress](https://reactjs.org/docs/accessibility.html)
 * [Revisit Later](https://reactjs.org/docs/lifting-state-up.html): Lifting State Up
 
@@ -239,6 +239,13 @@ function App() {
   *[DRY: Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
 5. **Identify Where Your State Should Live:** Which component owns the state?
 6. **Add Inverse Data Flow** 
+
+---
+
+## [React Router](https://reactrouter.com/docs/en/v6/getting-started/tutorial)
+* [Nested Routes](https://reactrouter.com/docs/en/v6/getting-started/tutorial#nested-routes)
+  * Outlets
+
 ---
 
 ## Topics to Research More
